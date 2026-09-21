@@ -56,7 +56,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -74,7 +73,7 @@ public class StudentController {
     
     @PostMapping("/students")
     //@requestBody helps Spring convert the incoming JSON into a Student object.
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@RequestBody Student student) {//requestbody=input to json format
         return studentService.createStudent(student);
     }
 
@@ -100,5 +99,20 @@ public class StudentController {
     public Student deleteStudent(@PathVariable Long id) {
         return studentService.deleteStudent(id);
     }
+    
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 
+    @GetMapping("/add-student")
+    public String addStudentPage(){
+        return "add-student";
+    }
+
+    @GetMapping ("/students-page")
+    public String studentsPage(){
+        return "students";
+    }
+    
 }
